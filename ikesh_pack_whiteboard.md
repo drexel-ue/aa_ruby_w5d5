@@ -55,35 +55,51 @@ class Array
     end
 
     def my_flatten(level = nil)
-        return [self[0]] if length == 1 && !self[0].is_a?(Array)
+        duped = self.dup
 
-        flattened = []
-        
-        if !level.nil?
-            while level > 0
-                (0...length).each do |index|
-                    if self[index].is_a?(Array)
-                        flattened << self[index].my_flatten(level - 1)
-                    else
-                        flattened << self[i]
-                    end
-                end
+        return dupe if level == 0
 
-            end
-        else
-            until !self.any? { |el| el.is_a?(Array) }
-                (0...length).each do |index|
-                    if self[index].is_a?(Array)
-                        flattened << self[index].my_flatten(level - 1)
-                    else
-                        flattened << self[i]
-                    end
-                end
-            end
+        next_level = level ? level - 1 : nil
+
+        each_with_index do |el, i|
+            duped[i..i] = el.my_flatten(next_level) if el.is_a?(Array)
         end
 
-        flattened
+        duped
     end
+
+    # Attempt
+
+    # def my_flatten(level = nil)
+    #     return [self[0]] if length == 1 && !self[0].is_a?(Array)
+
+    #     flattened = []
+        
+    #     if !level.nil?
+    #         while level > 0
+    #             (0...length).each do |index|
+    #                 if self[index].is_a?(Array)
+    #                     flattened << self[index].my_flatten(level - 1)
+    #                 else
+    #                     flattened << self[i]
+    #                 end
+    #             end
+
+    #         end
+    #     else
+    #         until !self.any? { |el| el.is_a?(Array) }
+    #             (0...length).each do |index|
+    #                 if self[index].is_a?(Array)
+    #                     flattened << self[index].my_flatten(level - 1)
+    #                 else
+    #                     flattened << self[i]
+    #                 end
+    #             end
+    #         end
+    #     end
+
+    #     flattened
+    # end
 
 
 
