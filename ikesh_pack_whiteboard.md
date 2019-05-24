@@ -68,6 +68,27 @@ class Array
         duped
     end
 
+    ### my_reduce
+
+# Write an array method that calls the given block on each element and
+# combines each result one-by-one with a given accumulator. If no accumulator is given, the first element is used.
+
+    def my_reduce(accumulator = nil, &prc)
+        if accumulator == nil
+            accumulator = self[0]
+            (1...length).each do |index|
+                accumulator = prc.call(accumulator, self[i])
+            end
+        else
+            (0...length).each do |index|
+                accumulator = prc.call(accumulator, self[i])
+            end
+        end
+
+        accumulator
+
+    end
+
     # Attempt
 
     # def my_flatten(level = nil)
