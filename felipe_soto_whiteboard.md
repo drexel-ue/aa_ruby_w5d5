@@ -73,3 +73,23 @@ class Array
     end
 
 end
+
+
+## Recursion
+
+### Factorials
+
+Write a method that recursively finds the first `n` factorial numbers
+and returns them. N! is the product of the numbers 1 to N.
+Be aware that the first factorial number is 0!, which is defined
+to equal 1. The 2nd factorial is 1!, the 3rd factorial is 2!, etc.
+
+def factorial_array(n)
+    return [1] if n == 1
+
+    facs_array = factorial_array(n - 1)
+    facs_array << (n - 1) * facs_array[-1]
+
+    facs_array
+
+end
