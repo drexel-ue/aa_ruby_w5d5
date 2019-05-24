@@ -111,3 +111,35 @@ def digital_root(num)
 
     output < 10 ? output : digital_root(output)
 end
+
+
+
+## Regular Methods
+
+### Largest Prime Factor
+
+Write a method that returns the largest prime factor of a number. We recommend writing a `is_prime?` helper method.
+
+
+def largest_prime_factor(n)
+
+    (n..2).each do |factor|
+        return factor if is_prime?(factor)
+    end
+
+    nil 
+
+end
+
+
+def is_prime?(num)
+    return false if num < 2
+
+    (2...num).each do |factor|
+        return false if num % factor
+    end
+
+    true
+
+end
+
