@@ -125,3 +125,25 @@ class Array
 
 
 end
+
+
+### Shuffled Sentences
+
+# This method returns true if the words in the string can be rearranged to form the
+# sentence passed as an argument. Words are separated by spaces.
+
+# Example:
+
+# ```ruby
+# "cats are cool".shuffled_sentence_detector("dogs are cool") => false
+# "cool cats are".shuffled_sentence_detector("cats are cool") => true
+
+class String
+    def shuffled_sentence_detector(sentence)
+        return false if self.split(' ').uniq.count < sentence.split(' ').uniq.count
+        self_hash = Hash.new { |hash, key| hash[key] = 0 }
+        sentence_hash = Hash.new { |hash, key| hash[key] = 0 }
+        split(' ').each { |word| self_hash[word] += 1 }
+        self_hash == sentence_hash
+    end
+end
