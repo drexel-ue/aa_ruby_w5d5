@@ -38,7 +38,27 @@ end
 
 Write a method that calls a passed block for each element of the array
 
+### dups
+
+Write an array method that returns a hash where the keys are any element
+that appears in the array more than once, and the values are sorted arrays
+of indices for those elements.
+
 class Array
+
+    def duped_indices
+
+        element_indices_hash = Hash.new { |hash, k| hash[k] = [] }
+
+        self.each_with_index do |ele, idx|
+            element_indices_hash[ele] << idx
+        end
+
+        elements_indices_hash.select { |k, v| v.length > 1 }
+    end
+
+
+
 
     def my_each(&prc)
 
