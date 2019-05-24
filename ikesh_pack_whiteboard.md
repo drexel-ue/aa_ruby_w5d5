@@ -147,3 +147,20 @@ class String
         self_hash == sentence_hash
     end
 end
+
+
+## Recursion
+
+### Fibonacci
+
+# Write a method that finds the first `n` Fibonacci numbers recursively.
+
+def rec_fib(n)
+    return [0] if n == 1
+    return [0,1] if n == 2
+    return [0,1,1] if n == 3
+
+    fibs = rec_fib(n - 1)
+    fibs << fibs[-2] + fibs[-1]
+    fibs
+end
