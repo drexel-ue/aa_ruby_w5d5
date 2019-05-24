@@ -48,7 +48,7 @@ class Array
 
             i += 1
         end
-        
+
         self
     end
 
